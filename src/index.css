@@ -287,6 +287,9 @@ textarea:focus-visible {
   max-width: 100%;
   object-fit: contain;
   object-position: center;
+  background: #fff;
+  border-radius: 8px;
+  padding: 4px;
 }
 
 .login-logo-stage {

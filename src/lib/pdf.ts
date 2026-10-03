@@ -124,21 +124,28 @@ function formatLongDate(iso: string): string {
   return d.toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })
 }
 
-// `logo` is pre-loaded once (async) by each caller via loadLogoBase64 and
-// passed in here, rather than fetched inside this function — buildPackingListPDF
-// calls this synchronously from inside forEach loops (once per page break),
-// and threading async/await through those loops isn't worth the risk on a
-// document this central. Pass null to fall back to text-only, as before.
+// Fit the full image without stretching; white keeps transparent logos readable on navy.
+function drawCompanyLogo(doc: jsPDF, logo: string, x: number, y: number, width: number, height: number, onDark = false) {
+  const padding = onDark ? 1 : 0
+  if (onDark) {
+    doc.setFillColor(255, 255, 255)
+    doc.roundedRect(x, y, width, height, 1, 1, 'F')
+  }
+  const image = doc.getImageProperties(logo)
+  const scale = Math.min((width - padding * 2) / image.width, (height - padding * 2) / image.height)
+  const imageWidth = image.width * scale
+  const imageHeight = image.height * scale
+  doc.addImage(logo, 'PNG', x + (width - imageWidth) / 2, y + (height - imageHeight) / 2, imageWidth, imageHeight)
+}
+
+// Callers preload the logo so packing-list page headers can remain synchronous.
 function navyHeader(doc: jsPDF, settings: CompanySettings, logo: string | null) {
   const pageWidth = doc.internal.pageSize.width
   doc.setFillColor(12, 28, 53)
   doc.rect(0, 0, pageWidth, 22, 'F')
   const textX = logo ? 40 : 14
   if (logo) {
-    // Logo is rendered on the dark navy band, so keep it compact and
-    // vertically centered rather than matching the invoice's larger
-    // top-left placement (which sits on a white background).
-    doc.addImage(logo, 'PNG', 14, 3, 22, 16)
+    drawCompanyLogo(doc, logo, 14, 3, 22, 16, true)
   }
   doc.setTextColor(255, 255, 255)
   doc.setFontSize(13)
@@ -176,7 +183,7 @@ export async function generateInvoicePDF(
   // ── Logo (top-left) ──
   const logo = await loadLogoBase64(companyLogoUrl(settings.logoPath))
   if (logo) {
-    doc.addImage(logo, 'PNG', 14, 8, 50, 22)
+    drawCompanyLogo(doc, logo, 14, 8, 50, 22)
   } else {
     doc.setFontSize(18)
     doc.setFont('helvetica', 'bold')
@@ -381,7 +388,7 @@ export async function printShippingLabel(
   doc.rect(0, 0, 152, 101, 'F')
   doc.setFillColor(12, 28, 53)
   doc.rect(0, 0, 152, 18, 'F')
-  if (logo) doc.addImage(logo, 'PNG', 122, 2, 22, 14)
+  if (logo) drawCompanyLogo(doc, logo, 122, 2, 22, 14, true)
   doc.setTextColor(255, 255, 255)
   doc.setFontSize(11)
   doc.setFont('helvetica', 'bold')
