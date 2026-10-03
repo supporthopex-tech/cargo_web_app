@@ -1,0 +1,11 @@
+{
+  "description": "Hopex Express Cargo staff workspace for shipments, packing, invoicing, payments and accounting.",
+  "robots": {
+    "index": false
+  },
+  "accessibility": {
+    "addBypassLinks": false,
+    "ignoreReducedMotion": false
+  },
+  "title": "Hopex Express Cargo Management"
+}

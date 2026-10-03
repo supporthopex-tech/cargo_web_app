@@ -1,0 +1,22 @@
+node_modules/
+package-lock.json
+dist/
+build/
+.cache/
+.env*
+!.env.example
+.vite/
+vite.config.*.timestamp-*
+*.tsbuildinfo
+*-debug.log*
+logs/
+*.log
+.claude-replay.*
+.tmp-*
+__pycache__/
+*.pyc
+*.zip
+
+# Figma Make design-reference scratch files — not imported by any app code
+src/imports/Invoice-1861.pdf
+src/imports/pasted_text/
