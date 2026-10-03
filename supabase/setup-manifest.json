@@ -1,0 +1,103 @@
+{
+  "app": "Hopex Express Cargo",
+  "status": "awaiting_manual_application",
+  "target_project_ref": null,
+  "target_organization_id": null,
+  "target_region": null,
+  "applied_migrations": [],
+  "migrations": [
+    {
+      "file": "0001_shipments_and_auth.sql",
+      "sha256": "238d212456d07e18a5a1270590135cfb632323fbfdbe7866a4b13497c2e9ebdc"
+    },
+    {
+      "file": "20260808172013_shipping_rates_fx_and_invoice_snapshots.sql",
+      "sha256": "2cd04f7f275ed03c482ed4ef7a667e99acd48ac6b35c5f6609b8c69aa9e93c42"
+    },
+    {
+      "file": "20260808173840_harden_shipment_item_policy.sql",
+      "sha256": "079fcc5bd3f46b0031c3d7f6a4f664088b47d3e2916011189f3c8ae099bc0864"
+    },
+    {
+      "file": "20260809145324_item_qr_packing_allocations.sql",
+      "sha256": "4c9384641038266994f4703eecd5744efaa8014a413b4c673513955ba2b134a3"
+    },
+    {
+      "file": "20260811093520_staff_management_and_active_access.sql",
+      "sha256": "3f61bc670a09b74403246d9e5f2c21748ae3bbf11dce742481d3728c25d6e5fc"
+    },
+    {
+      "file": "20260811153000_fix_staff_auth_trigger_username.sql",
+      "sha256": "27e9be7e5ca31e8badf3720df21f25563f0d01adfef96c70dbfeb9a3cdf2c2f8"
+    },
+    {
+      "file": "20260815013914_shipment_status_lifecycle.sql",
+      "sha256": "a73fafd60565e287bc33b99f0503ba4c91bd99b2efb532d8f5a69c30e13b289f"
+    },
+    {
+      "file": "20260815013917_double_entry_accounting.sql",
+      "sha256": "9182cf64c70de99d0fa1e2ccd645d2d3b5d6d8592991606441b14456d45f6f01"
+    },
+    {
+      "file": "20260816112517_add_bank_account_name.sql",
+      "sha256": "6dd14ba1b0fb5cfe4ea16da130a5e1e4143f295e7c76937fa31ae0267908c3ae"
+    },
+    {
+      "file": "20260817182455_close_packing_list.sql",
+      "sha256": "8f74f67701985172c3e8d41020363f2074279d0c221983406707ca8bda0204ce"
+    },
+    {
+      "file": "20260817184710_storage_inventory.sql",
+      "sha256": "b21b49a845126c11fc29c17a7645a7df55353e477341b40f475fba64c86fd2cf"
+    },
+    {
+      "file": "20260817190000_staff_profile_pictures.sql",
+      "sha256": "052453bf1776475f7e1a7c2d59aa3b7f6c07c1f9a165ab3ba630aee168a75bdb"
+    },
+    {
+      "file": "20260817193000_controlled_deletion_archive.sql",
+      "sha256": "481a90c98dab27d85ad88b667eb92e252103435f1a7ed4bf020f803b69dffb7b"
+    },
+    {
+      "file": "20260817200000_stage5_integration_review.sql",
+      "sha256": "de11c41b48711e5efb6fd62704b8afbb7b95632e1d2dca2fa238250352f8511b"
+    },
+    {
+      "file": "20260819120000_shipment_delete_and_payment_refund.sql",
+      "sha256": "f8142fdb077833ebef15c1008db492485c26c45afd664a148120d3419fbe440f"
+    },
+    {
+      "file": "20260819130000_partial_packing_dispatch.sql",
+      "sha256": "eeedcc1f0e89befd1ac5f6221a6659cd280a50ebab318ab9286e9de22cc22d44"
+    },
+    {
+      "file": "20260911090000_cargo_extra_charges.sql",
+      "sha256": "304dec62bbfa1dc1d9eca94ae6325269c94c8c0e3437684e2b907b553102a177"
+    },
+    {
+      "file": "20260911091000_atomic_payment_recording.sql",
+      "sha256": "660ded15fa742c40fa051e07244fed9044dd98d102cce0693760698e7aafaba2"
+    },
+    {
+      "file": "20260911092000_status_transition_confirmation.sql",
+      "sha256": "a865d013307f2de823b846e64d0b5ca83081601ac54a535d88c7e7d990825791"
+    },
+    {
+      "file": "20260912085000_migration_ledger.sql",
+      "sha256": "846548b4cc2887c7f321610a03a02f41fe68a5b85788c5862422076b3da37552"
+    },
+    {
+      "file": "20260912090000_invoice_repair_discount_and_expense_idempotency.sql",
+      "sha256": "11b58efe3eaacd4ab9b913b3fa89886d929c84353fd3b0eb4cda95fb8e553d46"
+    },
+    {
+      "file": "20261003090000_hopex_company_branding.sql",
+      "sha256": "4fa46b6aecc200f01cea27fddd627b03e053047faa1ec0a4e4a45b1f104f7358"
+    }
+  ],
+  "functions": [
+    "staff-login",
+    "staff-admin",
+    "complete-password-change"
+  ]
+}

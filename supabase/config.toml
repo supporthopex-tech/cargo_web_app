@@ -1,0 +1,25 @@
+project_id = "hopex-express-cargo"
+
+# Staff accounts are provisioned by the first Admin and staff-admin.
+[auth]
+enable_signup = false
+
+# Login accepts pre-session credentials; authenticated functions use both
+# the gateway JWT check and their own user/profile authorization.
+# https://supabase.com/docs/guides/functions/auth-headers
+[functions.staff-login]
+enabled = true
+verify_jwt = false
+entrypoint = "./functions/staff-login/index.ts"
+
+# The handler verifies the user's JWT through Auth, then requires active Admin.
+[functions.staff-admin]
+enabled = true
+verify_jwt = true
+entrypoint = "./functions/staff-admin/index.ts"
+
+# The handler verifies the user's JWT and active staff profile before writing.
+[functions.complete-password-change]
+enabled = true
+verify_jwt = true
+entrypoint = "./functions/complete-password-change/index.ts"
