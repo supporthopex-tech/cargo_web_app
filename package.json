@@ -1,0 +1,38 @@
+{
+  "name": "hopex-cargo-webapp",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 0.0.0.0",
+    "build": "vite build",
+    "preview": "vite preview",
+    "format": "oxfmt",
+    "typecheck": "tsc --noEmit",
+    "test": "node --experimental-strip-types --test src/lib/pricing.test.ts src/lib/packing.test.ts src/lib/statusLifecycle.test.ts src/lib/accounting.test.ts src/lib/inventory.test.ts src/lib/autoNumber.test.ts src/lib/domainErrors.test.ts"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.112.2",
+    "jsbarcode": "^3.12.3",
+    "jspdf": "^4.2.1",
+    "jspdf-autotable": "^5.0.8",
+    "qr-scanner": "1.4.2",
+    "qrcode.react": "^4.2.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "react-hot-toast": "^2.6.0",
+    "zustand": "^5.0.14"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.0.0",
+    "@types/jsbarcode": "^3.11.4",
+    "@types/node": "^22.0.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "@vitejs/plugin-react": "^6.0.0",
+    "oxfmt": "^0.2.0",
+    "tailwindcss": "^4.0.0",
+    "typescript": "^5.7.0",
+    "vite": "^8.0.0"
+  }
+}

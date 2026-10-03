@@ -1,0 +1,17 @@
+[build]
+  # Netlify auto-detects pnpm-lock.yaml and runs the install itself;
+  # this only needs to run the build script.
+  command = "pnpm build"
+  publish = "dist"
+
+# Single-page app: serve index.html for any path so client-side navigation
+# (and any router added later) doesn't 404 on refresh/deep links.
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+# Environment variables (set in Netlify site settings, not here), once the
+# app is migrated off localStorage onto Supabase — see README.md:
+#   VITE_SUPABASE_URL
+#   VITE_SUPABASE_PUBLISHABLE_KEY
