@@ -124,15 +124,10 @@ function formatLongDate(iso: string): string {
   return d.toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })
 }
 
-// Fit the full image without stretching; white keeps transparent logos readable on navy.
-function drawCompanyLogo(doc: jsPDF, logo: string, x: number, y: number, width: number, height: number, onDark = false) {
-  const padding = onDark ? 1 : 0
-  if (onDark) {
-    doc.setFillColor(255, 255, 255)
-    doc.roundedRect(x, y, width, height, 1, 1, 'F')
-  }
+// Fit the full transparent image without stretching or adding a background.
+function drawCompanyLogo(doc: jsPDF, logo: string, x: number, y: number, width: number, height: number) {
   const image = doc.getImageProperties(logo)
-  const scale = Math.min((width - padding * 2) / image.width, (height - padding * 2) / image.height)
+  const scale = Math.min(width / image.width, height / image.height)
   const imageWidth = image.width * scale
   const imageHeight = image.height * scale
   doc.addImage(logo, 'PNG', x + (width - imageWidth) / 2, y + (height - imageHeight) / 2, imageWidth, imageHeight)
@@ -145,7 +140,7 @@ function navyHeader(doc: jsPDF, settings: CompanySettings, logo: string | null) 
   doc.rect(0, 0, pageWidth, 22, 'F')
   const textX = logo ? 40 : 14
   if (logo) {
-    drawCompanyLogo(doc, logo, 14, 3, 22, 16, true)
+    drawCompanyLogo(doc, logo, 14, 3, 22, 16)
   }
   doc.setTextColor(255, 255, 255)
   doc.setFontSize(13)
@@ -388,7 +383,7 @@ export async function printShippingLabel(
   doc.rect(0, 0, 152, 101, 'F')
   doc.setFillColor(12, 28, 53)
   doc.rect(0, 0, 152, 18, 'F')
-  if (logo) drawCompanyLogo(doc, logo, 122, 2, 22, 14, true)
+  if (logo) drawCompanyLogo(doc, logo, 122, 2, 22, 14)
   doc.setTextColor(255, 255, 255)
   doc.setFontSize(11)
   doc.setFont('helvetica', 'bold')

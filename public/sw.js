@@ -8,7 +8,7 @@
 // invoices, payments, and every other piece of business data always come
 // straight from the network. This app is explicitly NOT offline-first for
 // data — only the shell is cached.
-const SHELL_CACHE = 'hopex-shell-v2'
+const SHELL_CACHE = 'hopex-shell-v3'
 
 self.addEventListener('install', () => {
   self.skipWaiting()
