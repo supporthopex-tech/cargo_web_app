@@ -156,3 +156,5 @@
 public/icon-192.png          -filter -diff -merge -text
 public/icon-512.png          -filter -diff -merge -text
 public/maskable-icon-512.png -filter -diff -merge -text
+public/hopex-logo.png       -filter -diff -merge -text
+src/imports/hopex-logo.png  -filter -diff -merge -text
